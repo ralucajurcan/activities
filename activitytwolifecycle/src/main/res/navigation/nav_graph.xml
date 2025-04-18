@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/fragment2">
+
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.example.activitytwolifecycle.presentation.Fragment2"
+        android:label="Fragment 2">
+        <action
+            android:id="@+id/action_fragment2_to_fragment3"
+            app:destination="@id/fragment3" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment3"
+        android:name="com.example.activitytwolifecycle.presentation.Fragment3"
+        android:label="Fragment 3">
+        <action
+            android:id="@+id/action_fragment3_to_fragment4"
+            app:destination="@id/fragment4" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment4"
+        android:name="com.example.activitytwolifecycle.presentation.Fragment4"
+        android:label="Fragment 4">
+        <action
+            android:id="@+id/action_fragment4_to_fragment5"
+            app:destination="@id/fragment5"
+            app:popUpTo="@id/fragment2"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment5"
+        android:name="com.example.activitytwolifecycle.presentation.Fragment5"
+        android:label="Fragment 5">
+        <action
+            android:id="@+id/action_fragment5_to_fragment6"
+            app:destination="@id/fragment6" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment6"
+        android:name="com.example.activitytwolifecycle.presentation.Fragment6"
+        android:label="Fragment 6">
+    </fragment>
+
+
+</navigation>
