@@ -30,11 +30,25 @@ class Fragment6 : Fragment(R.layout.fragment_fragment6) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentFragment6Binding.bind(view)
 
-        Log.d("Fragment2", "onViewCreated")
+        Log.d("Fragment6", "onViewCreated")
+
+        val fragmentManager = requireActivity().supportFragmentManager
 
         binding.button6.setOnClickListener {
-            this.parentFragmentManager.popBackStack()
+            Log.d("Fragment6", "button6 click")
+
+            // this.parentFragmentManager.popBackStack() -- not gonna work because F5 has already been destroyed, nothing underneath F6 -> blank screen
+            // If F5 already exists, bring it to the front; otherwise create it once
+            if (!fragmentManager.popBackStackImmediate("Fragment5_manual", 0)) {
+                fragmentManager.beginTransaction()
+                    .replace(R.id.nav_host_fragment_container, Fragment5())
+                    .addToBackStack("Fragment5_manual")
+                    .commit()
+            }
         }
+
+        // if someone wants to press the device back btn ->  need to override the onBackPressedDispatcher
+        // requireActivity().onBackPressedDispatcher.addCallback
     }
 
     override fun onStart() {

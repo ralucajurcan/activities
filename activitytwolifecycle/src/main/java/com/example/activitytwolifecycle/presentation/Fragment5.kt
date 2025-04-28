@@ -33,9 +33,34 @@ class Fragment5 : Fragment(R.layout.fragment_fragment5) {
         Log.d("Fragment5", "onViewCreated")
 
         binding.button5.setOnClickListener {
-            this.parentFragmentManager.beginTransaction()
+            Log.d("Fragment5", "click on btn go to F6")
+            val activity = requireActivity()
+            val fragmentManager = activity.supportFragmentManager
+
+            // manually detach NavHostFragment before manually showing F6
+            val navHostFragment = fragmentManager
+                .findFragmentById(R.id.nav_host_fragment_container)
+
+            if (navHostFragment != null) {
+                fragmentManager
+                    .beginTransaction()
+                    .remove(navHostFragment)
+                    .commitNow() // this makes the fragment to detach immediately
+            }
+
+            fragmentManager.beginTransaction()
                 .replace(R.id.nav_host_fragment_container, Fragment6())
-                .addToBackStack(null)
+                .addToBackStack("Fragment5_manual")
+                .commit()
+        }
+
+        binding.button7.setOnClickListener {
+            Log.d("Fragment5", "click on btn go to F1")
+            val activity = requireActivity()
+            val fragmentManager = activity.supportFragmentManager
+            fragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment_container, Fragment1())
+                .addToBackStack("Fragment5_manual")
                 .commit()
         }
     }
