@@ -46,6 +46,7 @@ class Fragment2 : Fragment(R.layout.fragment_fragment2) {
 
         viewModel.sharedData.observe(viewLifecycleOwner) {value ->
             Log.d("Fragment2", "Observed sharedData = $value")
+            binding.textview2.text = "Shared data: $value"
         }
     }
 

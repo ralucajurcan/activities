@@ -37,7 +37,7 @@ class Fragment3 : Fragment(R.layout.fragment_fragment3) {
         Log.d("Fragment3", "onViewCreated")
 
         binding.button3.setOnClickListener {
-            viewModel.updateData("Updated by F3")
+            viewModel.updateData("Hi from F3")
             findNavController().navigate(R.id.action_fragment3_to_fragment4)
         }
 

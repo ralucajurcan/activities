@@ -8,6 +8,8 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.activityonelifecycle.presentation.Fragment1
+import com.example.activityonelifecycle.presentation.Fragment3
 
 class MainActivity : AppCompatActivity() {
     override fun startActivity(intent: Intent?) {
@@ -27,6 +29,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, Fragment1())
+                .commit()
+        }
+
         Log.d("MainActivity", "onCreate")
     }
 
